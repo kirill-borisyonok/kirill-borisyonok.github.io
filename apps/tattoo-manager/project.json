@@ -20,6 +20,11 @@
           "apps/tattoo-manager/src/assets"
         ],
         "styles": ["apps/tattoo-manager/src/styles.scss"],
+        "stylePreprocessorOptions": {
+					"includePaths": [
+						"libs/shared/src/lib/styles"
+					]
+				},
         "scripts": []
       },
       "configurations": {
@@ -27,13 +32,11 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "500kb"
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumWarning": "2kb"
             }
           ],
           "outputHashing": "all"
@@ -89,12 +92,6 @@
           "ci": true,
           "codeCoverage": true
         }
-      }
-    },
-    "serve-static": {
-      "executor": "@nrwl/web:file-server",
-      "options": {
-        "buildTarget": "tattoo-manager:build"
       }
     }
   }

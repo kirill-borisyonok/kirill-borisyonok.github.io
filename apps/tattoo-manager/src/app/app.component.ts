@@ -1,14 +1,11 @@
-import { Component } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { NxWelcomeComponent } from "./nx-welcome.component";
-
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { TopPanelComponent } from '@tattoo-manager/shared/ui-components/top-panel/top-panel.component';
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: "tattoo-manager-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  imports: [RouterModule, TopPanelComponent],
+  selector: 'tattoo-manager-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = "tattoo-manager";
-}
+export class AppComponent {}
