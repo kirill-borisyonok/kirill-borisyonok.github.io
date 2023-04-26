@@ -5,39 +5,10 @@
   justify-content: $justify;
 }
 
-@mixin profile-photo($width, $height) {
-  width: $width;
-  height: $height;
-
-  object-fit: cover;
-  border-radius: 100%;
-}
-
 @mixin color-variables($colors) {
   @each $name, $color in $colors {
     --#{"" + $name}: #{$color};
   }
-}
-@mixin icon-xs() {
-  width: 1rem;
-  height: 1rem;
-}
-
-@mixin icon-s() {
-  width: 1.375rem;
-  height: 1.375rem;
-}
-@mixin icon-m() {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-@mixin icon-l() {
-  width: 2rem;
-  height: 2rem;
-}
-@mixin icon-xl() {
-  width: 3rem;
-  height: 3rem;
 }
 @mixin var-range($variable, $value) {
   #{$variable}: $value;
@@ -57,12 +28,9 @@
   #{$variable}-xxl: calc(var(#{$variable}) * 6);
 }
 
-@mixin width-variables($width, $indent) {
-  width: calc(100% - #{$width} - #{$indent});
-}
-
-@mixin height-variables($height, $indent) {
-  height: calc(100% - #{$height} - #{$indent});
+@mixin size($width, $height: $width) {
+	height: $height;
+	width: $width;
 }
 
 @mixin scroll-bar($width: var(--offset-s), $height: var(--offset-s)) {

@@ -1,5 +1,26 @@
+@use 'mixins' as mixins;
+
 :host {
     .top-panel {
-        
+        @include mixins.flex(center, flex-start);
+        padding: var(--offset);
+        height: 3.5rem;
+        color: white;
+        background-color: var(--black);
+        opacity: 0.8;
+
+        &-logo {
+            margin-right: var(--offset);
+        }
+
+        &-tab {
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+        }
+
+        .active {
+            background-color: var(--gray2);
+            color: var(--white);
+        }
     }
 }

@@ -1,0 +1,15 @@
+export enum StepNames {
+  ApplicationDate = 'Дата обращения',
+  Name = 'ФИО',
+  Male = 'Пол',
+  SessionDate = 'Дата сеанса',
+  Link = 'Ссылка',
+  Source = 'Источник',
+  Phone = 'Номер телефона',
+  Sketch = 'Эскиз',
+  PaymentMade = 'Внесенная оплата',
+  Payment = 'Стоимость',
+  Status = 'Статус',
+  City = 'Город',
+  Comment = 'Комментарий',
+}

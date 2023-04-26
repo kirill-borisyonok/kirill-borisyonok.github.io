@@ -1,4 +1,12 @@
 <header class="top-panel">
-  <div class="top-panel-logo"></div>
-  <div class="top-panel-tab">{{ tabs.dashboard.tabName }}</div>
+  <div class="top-panel-logo">
+    <img src="assets/svg/ph_google-play-logo-thin.svg" alt="logo">
+  </div>
+  <a
+    class="top-panel-tab"
+    routerLink=""
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >{{ tabs.dashboard.tabName }}</a
+  >
 </header>

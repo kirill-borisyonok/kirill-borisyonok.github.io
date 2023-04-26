@@ -1,0 +1,33 @@
+@use 'mixins' as mixins;
+
+:host {
+  .dashboard {
+    @include mixins.flex(flex-start, flex-start);
+
+    &-form {
+      @include mixins.flex(flex-start, flex-start);
+
+      &-item {
+        margin: 0 var(--offset) var(--offset) 0;
+        width: calc(50% - var(--offset));
+      }
+    }
+  }
+  .example-input-wrapper {
+    margin-bottom: 16px;
+  }
+  
+  label {
+    margin-right: 4px;
+  }
+
+  .btn-back {
+    margin-right: 1rem;
+    color: var(--primary) !important;
+    background-color: var(--gray) !important;
+  }
+
+  .mat-button-toggle-group {
+    margin-bottom: var(--offset);
+  }
+}
