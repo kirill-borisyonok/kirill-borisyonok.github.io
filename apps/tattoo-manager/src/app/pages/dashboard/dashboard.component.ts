@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StepNames } from './entities/dashboard.constants';
@@ -24,6 +24,12 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import { GoogleSheetsDbService } from 'ng-google-sheets-db';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
+import {GoogleService} from '../../services/google.service';
 
 @Component({
   standalone: true,
@@ -105,7 +111,8 @@ export class DashboardComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private googleSheetsDbService: GoogleSheetsDbService
+    private googleSheetsDbService: GoogleSheetsDbService,
+    private googleService: GoogleService
   ) {}
 
   attributesMapping = {
@@ -113,8 +120,11 @@ export class DashboardComponent {
     name: 'ФИО',
     email: 'Пол',
     contact: 'Дата сеанса',
-    link: 'Ссылка'
+    link: 'Ссылка',
   };
+
+  client: any;
+  access_token: any;
 
   protected save(): void {}
 
@@ -127,5 +137,47 @@ export class DashboardComponent {
         this.attributesMapping
       )
       .subscribe((item) => console.log(item));
+
+    // @ts-ignore
+
+    // console.log(google.accounts.oauth2);
+
+    this.googleService.initClient()
+
+    // @ts-ignore
+    // this.client = google.accounts.oauth2.initTokenClient({
+    //   client_id: 'YOUR_CLIENT_ID',
+    //   scope:
+    //     'https://www.googleapis.com/auth/calendar.readonly \
+    //             https://www.googleapis.com/auth/contacts.readonly',
+    //   callback: (tokenResponse: {access_token: any;}) => {
+    //     this.access_token = tokenResponse.access_token;
+    //   },
+    // });
+
+    // setTimeout(() => this.getToken(), 3000)
+  }
+
+  // getToken() {
+  //   console.log(this.client.requestAccessToken());
+
+  //   this.client.requestAccessToken();
+  //   this.revokeToken()
+  // }
+  // revokeToken() {
+  //   // @ts-ignore
+  //   google.accounts.oauth2.revoke(this.access_token, () => {console.log('access token revoked')});
+  // }
+
+  getToken() {
+    this.googleService.getToken();
+  }
+
+  loadCalendar() {
+    this.googleService.loadCalendar();
+  }
+
+  revokeToken() {
+    this.googleService.revokeToken();
   }
 }
