@@ -23,13 +23,7 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
-import { GoogleSheetsDbService } from 'ng-google-sheets-db';
-import {
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialUser,
-} from 'angularx-social-login';
-import {GoogleService} from '../../services/google.service';
+import { GoogleService } from '../../services/google.service';
 
 @Component({
   standalone: true,
@@ -111,7 +105,6 @@ export class DashboardComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private googleSheetsDbService: GoogleSheetsDbService,
     private googleService: GoogleService
   ) {}
 
@@ -130,51 +123,16 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.male.valueChanges.subscribe((item) => console.log(item));
-    this.characters$ = this.googleSheetsDbService
-      .get(
-        '16VkFH-YVB0iSkebBJmQVeFwzBnN7uHk4AWpw-j5D2TY',
-        'Characters',
-        this.attributesMapping
-      )
-      .subscribe((item) => console.log(item));
 
-    // @ts-ignore
-
-    // console.log(google.accounts.oauth2);
-
-    this.googleService.initClient()
-
-    // @ts-ignore
-    // this.client = google.accounts.oauth2.initTokenClient({
-    //   client_id: 'YOUR_CLIENT_ID',
-    //   scope:
-    //     'https://www.googleapis.com/auth/calendar.readonly \
-    //             https://www.googleapis.com/auth/contacts.readonly',
-    //   callback: (tokenResponse: {access_token: any;}) => {
-    //     this.access_token = tokenResponse.access_token;
-    //   },
-    // });
-
-    // setTimeout(() => this.getToken(), 3000)
+    this.googleService.initClient();
   }
-
-  // getToken() {
-  //   console.log(this.client.requestAccessToken());
-
-  //   this.client.requestAccessToken();
-  //   this.revokeToken()
-  // }
-  // revokeToken() {
-  //   // @ts-ignore
-  //   google.accounts.oauth2.revoke(this.access_token, () => {console.log('access token revoked')});
-  // }
 
   getToken() {
     this.googleService.getToken();
   }
 
   loadCalendar() {
-    this.googleService.loadCalendar();
+    this.googleService.addNewValue().subscribe(item => console.log(item));
   }
 
   revokeToken() {

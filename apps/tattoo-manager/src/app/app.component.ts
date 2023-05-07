@@ -1,9 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TopPanelComponent } from '@tattoo-manager/shared/ui-components/top-panel/top-panel.component';
 import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
-import {GoogleService} from './services/google.service';
+import { GoogleService } from './services/google.service';
 
 @Component({
   standalone: true,
@@ -17,7 +17,7 @@ import {GoogleService} from './services/google.service';
       useValue: 'AIzaSyBnwNPwEzCYoFvVzsox74DQ_RrJj1KVyQY',
     },
     GoogleSheetsDbService,
-    GoogleService
+    GoogleService,
   ],
 })
 export class AppComponent {}
