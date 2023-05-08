@@ -68,6 +68,10 @@ export class DashboardComponent implements OnInit {
   protected readonly stepNames = StepNames;
   protected readonly btnName = 'Сохранить';
 
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly googleService = inject(GoogleService);
+
+  // Form build
   protected applicationDateFormGroup: FormGroup = this.formBuilder.group({
     applicationDate: [''],
   });
@@ -101,23 +105,6 @@ export class DashboardComponent implements OnInit {
   });
 
   protected male = new FormControl('Мужской');
-  characters$: any;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private googleService: GoogleService
-  ) {}
-
-  attributesMapping = {
-    id: 'Дата обращения',
-    name: 'ФИО',
-    email: 'Пол',
-    contact: 'Дата сеанса',
-    link: 'Ссылка',
-  };
-
-  client: any;
-  access_token: any;
 
   ngOnInit(): void {
     this.male.valueChanges.subscribe((item) => console.log(item));
@@ -125,17 +112,15 @@ export class DashboardComponent implements OnInit {
     this.googleService.initClient();
   }
 
-  getToken() {
+  protected getToken(): void {
     this.googleService.getToken();
   }
 
-  loadCalendar() {
-    this.googleService.addNewValue().subscribe(item => console.log(item));
-  }
-
-  revokeToken() {
+  protected revokeToken(): void {
     this.googleService.revokeToken();
   }
 
-  protected save(): void {}
+  protected save(): void {
+    this.googleService.addNewValue().subscribe(item => console.log(item));
+  }
 }

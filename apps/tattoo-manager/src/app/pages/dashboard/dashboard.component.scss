@@ -6,10 +6,14 @@
 
     &-form {
       @include mixins.flex(flex-start, flex-start);
+      width: 100%;
 
-      &-item {
-        margin: 0 var(--offset) var(--offset) 0;
-        width: calc(50% - var(--offset));
+      .mat-stepper-vertical {
+        width: 100%;
+      }
+
+      .mat-mdc-form-field {
+        width: 100%;
       }
     }
   }
