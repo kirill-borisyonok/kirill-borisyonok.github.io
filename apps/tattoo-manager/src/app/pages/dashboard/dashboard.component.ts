@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StepNames } from './entities/dashboard.constants';
@@ -64,7 +64,7 @@ import { GoogleService } from '../../services/google.service';
     },
   ],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   protected readonly stepNames = StepNames;
   protected readonly btnName = 'Сохранить';
 
@@ -119,9 +119,7 @@ export class DashboardComponent {
   client: any;
   access_token: any;
 
-  protected save(): void {}
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.male.valueChanges.subscribe((item) => console.log(item));
 
     this.googleService.initClient();
@@ -138,4 +136,6 @@ export class DashboardComponent {
   revokeToken() {
     this.googleService.revokeToken();
   }
+
+  protected save(): void {}
 }

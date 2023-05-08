@@ -11,8 +11,6 @@ export class GoogleService {
 
   public initClient() {
     // @ts-ignore
-    console.log(google);
-    // @ts-ignore
     this.client = google.accounts.oauth2.initTokenClient({
       client_id:
         '983930191842-hpcrf4ec9h5pdc6l6vdjn69omsfdpjmk.apps.googleusercontent.com',
@@ -36,8 +34,6 @@ export class GoogleService {
   }
 
   public loadSheet(): Observable<any> {
-    // @ts-ignore
-    console.log(google.accounts.oauth2);
     const headers = new HttpHeaders();
     headers.append('Authorization', `Bearer ${this.access_token}`);
     return this.http.get(
