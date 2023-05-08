@@ -13,6 +13,7 @@ export class GoogleService {
       scope: 'https://www.googleapis.com/auth/spreadsheets',
       callback: (tokenResponse: { access_token: string }) => {
         this.access_token = tokenResponse.access_token;
+        localStorage.setItem('googleToken', this.access_token);
       },
     });
   }

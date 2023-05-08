@@ -20,17 +20,18 @@ export class GoogleSheetService {
       );
   }
 
-  public addNewValue(): Observable<any> {
+  public addNewValue(data: string[]): Observable<any> {
+    const authToken = localStorage.getItem('googleToken');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.googleService.access_token}`,
+      Authorization: `Bearer ${authToken}`,
       Accept: 'application/json',
     });
 
     return this.http.post(
       'https://sheets.googleapis.com/v4/spreadsheets/16VkFH-YVB0iSkebBJmQVeFwzBnN7uHk4AWpw-j5D2TY/values/Characters:append?valueInputOption=RAW',
       {
-        values: [['asdfasdf']],
+        values: [data],
       },
       {
         headers: headers,

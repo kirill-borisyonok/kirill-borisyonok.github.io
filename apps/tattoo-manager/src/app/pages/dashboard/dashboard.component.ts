@@ -146,25 +146,25 @@ export class DashboardComponent implements OnInit {
       this.filteredSources = this.sourceFormGroup.controls.source.valueChanges.pipe(
         untilDestroyed(this),
         startWith(''),
-        map(value => this.filterSources(value || '')),
+        map(value => this.filterAutocomplete(value || '', this.sources)),
       );
 
       this.filteredNames = this.nameFormGroup.controls.name.valueChanges.pipe(
         untilDestroyed(this),
         startWith(''),
-        map(value => this.filterSources(value || '')),
+        map(value => this.filterAutocomplete(value || '', this.names)),
       )
 
       this.filteredStatus = this.statusFormGroup.controls.status.valueChanges.pipe(
         untilDestroyed(this),
         startWith(''),
-        map(value => this.filterSources(value || '')),
+        map(value => this.filterAutocomplete(value || '', this.status)),
       )
 
       this.filteredCities = this.cityFormGroup.controls.city.valueChanges.pipe(
         untilDestroyed(this),
         startWith(''),
-        map(value => this.filterSources(value || '')),
+        map(value => this.filterAutocomplete(value || '', this.cities)),
       )
     });
   }
@@ -178,14 +178,30 @@ export class DashboardComponent implements OnInit {
   }
 
   protected save(): void {
+    const newData = [
+      this.applicationDateFormGroup.controls.applicationDate.value.format('DD.MM.YYYY'),
+      this.nameFormGroup.controls.name.value,
+      this.male.value?.[0],
+      this.sessionDateFormGroup.controls.sessionDate.value.format('DD.MM.YYYY'),
+      this.linkFormGroup.controls.link.value,
+      this.sourceFormGroup.controls.source.value,
+      this.phoneFormGroup.controls.phone.value,
+      this.sketchFormGroup.controls.sketch.value,
+      this.paymentMadeFormGroup.controls.paymentMade.value,
+      this.paymentFormGroup.controls.payment.value,
+      this.statusFormGroup.controls.status.value,
+      this.cityFormGroup.controls.city.value,
+      this.commentFormGroup.controls.comment.value,
+    ];
+
     this.googleSheetService
-      .addNewValue()
+      .addNewValue(newData)
       .subscribe((item) => console.log(item));
   }
 
-  private filterSources(value: string): string[] {
+  private filterAutocomplete(value: string, data: string[]): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.sources.filter(option => option.toLowerCase().includes(filterValue));
+    return data.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

@@ -1,0 +1,8 @@
+@use 'mixins' as mixins;
+
+:host {
+    .login {
+        height: 100%;
+        width: 100%;
+    }
+}
