@@ -26,8 +26,6 @@ export class GoogleService {
 
   public revokeToken() {
     // @ts-ignore
-    google.accounts.oauth2.revoke(this.access_token, () => {
-      console.log('access token revoked');
-    });
+    google.accounts.oauth2.revoke(this.access_token);
   }
 }
