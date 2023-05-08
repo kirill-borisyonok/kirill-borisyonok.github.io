@@ -8,19 +8,12 @@
         <form [formGroup]="applicationDateFormGroup">
           <ng-template matStepLabel>{{
             stepNames.ApplicationDate
-          }}</ng-template>
+            }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.ApplicationDate"
-              formControlName="applicationDate"
-              [matDatepicker]="pickerApplicationDate"
-            />
+            <input matInput [placeholder]="stepNames.ApplicationDate" formControlName="applicationDate"
+              [matDatepicker]="pickerApplicationDate" />
             <mat-hint>DD.MM.YYYY</mat-hint>
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="pickerApplicationDate"
-            ></mat-datepicker-toggle>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerApplicationDate"></mat-datepicker-toggle>
             <mat-datepicker #pickerApplicationDate></mat-datepicker>
           </mat-form-field>
           <div>
@@ -33,19 +26,15 @@
         <form [formGroup]="nameFormGroup">
           <ng-template matStepLabel>{{ stepNames.Name }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Name"
-              formControlName="name"
-            />
+            <input matInput [placeholder]="stepNames.Name" formControlName="name" [matAutocomplete]="autoName" />
+            <mat-autocomplete #autoName="matAutocomplete">
+              <mat-option *ngFor="let option of filteredNames | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -61,12 +50,7 @@
             <mat-button-toggle value="Женский">Женский</mat-button-toggle>
           </mat-button-toggle-group>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -78,26 +62,14 @@
         <form [formGroup]="sessionDateFormGroup">
           <ng-template matStepLabel>{{ stepNames.SessionDate }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.SessionDate"
-              formControlName="sessionDate"
-              [matDatepicker]="pickerSessionDate"
-            />
+            <input matInput [placeholder]="stepNames.SessionDate" formControlName="sessionDate"
+              [matDatepicker]="pickerSessionDate" />
             <mat-hint>DD.MM.YYYY</mat-hint>
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="pickerSessionDate"
-            ></mat-datepicker-toggle>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerSessionDate"></mat-datepicker-toggle>
             <mat-datepicker #pickerSessionDate></mat-datepicker>
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -109,19 +81,10 @@
         <form [formGroup]="linkFormGroup">
           <ng-template matStepLabel>{{ stepNames.Link }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Link"
-              formControlName="link"
-            />
+            <input matInput [placeholder]="stepNames.Link" formControlName="link" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -133,19 +96,15 @@
         <form [formGroup]="sourceFormGroup">
           <ng-template matStepLabel>{{ stepNames.Source }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Source"
-              formControlName="source"
-            />
+            <input matInput [placeholder]="stepNames.Source" formControlName="source" [matAutocomplete]="autoSource" />
+            <mat-autocomplete #autoSource="matAutocomplete">
+              <mat-option *ngFor="let option of filteredSources | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -157,19 +116,10 @@
         <form [formGroup]="phoneFormGroup">
           <ng-template matStepLabel>{{ stepNames.Phone }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Phone"
-              formControlName="phone"
-            />
+            <input matInput [placeholder]="stepNames.Phone" formControlName="phone" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -181,19 +131,10 @@
         <form [formGroup]="sketchFormGroup">
           <ng-template matStepLabel>{{ stepNames.Sketch }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Sketch"
-              formControlName="sketch"
-            />
+            <input matInput [placeholder]="stepNames.Sketch" formControlName="sketch" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -205,19 +146,10 @@
         <form [formGroup]="paymentMadeFormGroup">
           <ng-template matStepLabel>{{ stepNames.PaymentMade }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.PaymentMade"
-              formControlName="paymentMade"
-            />
+            <input matInput [placeholder]="stepNames.PaymentMade" formControlName="paymentMade" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -229,19 +161,10 @@
         <form [formGroup]="paymentFormGroup">
           <ng-template matStepLabel>{{ stepNames.Payment }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Payment"
-              formControlName="payment"
-            />
+            <input matInput [placeholder]="stepNames.Payment" formControlName="payment" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -253,19 +176,15 @@
         <form [formGroup]="statusFormGroup">
           <ng-template matStepLabel>{{ stepNames.Status }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Status"
-              formControlName="status"
-            />
+            <input matInput [placeholder]="stepNames.Status" formControlName="status" [matAutocomplete]="autoStatus" />
+            <mat-autocomplete #autoStatus="matAutocomplete">
+              <mat-option *ngFor="let option of filteredStatus | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -277,19 +196,15 @@
         <form [formGroup]="cityFormGroup">
           <ng-template matStepLabel>{{ stepNames.City }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.City"
-              formControlName="city"
-            />
+            <input matInput [placeholder]="stepNames.City" formControlName="city" [matAutocomplete]="autoCity" />
+            <mat-autocomplete #autoCity="matAutocomplete">
+              <mat-option *ngFor="let option of filteredCities | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -301,19 +216,10 @@
         <form [formGroup]="commentFormGroup">
           <ng-template matStepLabel>{{ stepNames.Comment }}</ng-template>
           <mat-form-field>
-            <input
-              matInput
-              [placeholder]="stepNames.Comment"
-              formControlName="comment"
-            />
+            <input matInput [placeholder]="stepNames.Comment" formControlName="comment" />
           </mat-form-field>
           <div>
-            <button
-              mat-button
-              matStepperPrevious
-              class="btn-back"
-              color="primary"
-            >
+            <button mat-button matStepperPrevious class="btn-back" color="primary">
               Back
             </button>
             <button mat-button matStepperNext>Next</button>
@@ -325,12 +231,7 @@
         <ng-template matStepLabel>{{ btnName }}</ng-template>
         You are now done.
         <div>
-          <button
-            mat-button
-            matStepperPrevious
-            class="btn-back"
-            color="primary"
-          >
+          <button mat-button matStepperPrevious class="btn-back" color="primary">
             Back
           </button>
           <button mat-button (click)="save()">{{ btnName }}</button>
