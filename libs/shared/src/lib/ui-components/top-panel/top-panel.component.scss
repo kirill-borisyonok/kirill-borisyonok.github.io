@@ -3,19 +3,18 @@
 :host {
     .top-panel {
         @include mixins.flex(center, flex-start);
+        gap: var(--offset);
         padding: var(--offset);
         height: 3.5rem;
         color: white;
         background-color: var(--black);
         opacity: 0.8;
 
-        &-logo {
-            margin-right: var(--offset);
-        }
-
         &-tab {
             padding: 0.8rem 2rem;
             border-radius: var(--border-radius);
+            background-color: var(--primary);
+            color: var(--black);
         }
 
         .active {

@@ -27,8 +27,11 @@
 
   .btn-back {
     margin-right: 1rem;
-    color: var(--primary) !important;
-    background-color: var(--gray) !important;
+  }
+
+  .btn-next {
+    margin-right: 1rem;
+    background-color: var(--secondary) !important;
   }
 
   .mat-button-toggle-group {

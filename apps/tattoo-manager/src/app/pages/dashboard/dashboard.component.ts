@@ -133,10 +133,6 @@ export class DashboardComponent implements OnInit {
   protected male = new FormControl('Мужской');
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.googleService.initClient();
-    }, 1000);
-
     this.googleSheetService.loadSheet().pipe(untilDestroyed(this)).subscribe((item) => {
       this.cities = [...new Set(item.map((el) => el[this.stepNames.City]))].filter((item) => item);
       this.names = [...new Set(item.map((el) => el[this.stepNames.Name]))].filter((item) => item);
@@ -167,10 +163,6 @@ export class DashboardComponent implements OnInit {
         map(value => this.filterAutocomplete(value || '', this.cities)),
       )
     });
-  }
-
-  protected getToken(): void {
-    this.googleService.getToken();
   }
 
   protected revokeToken(): void {

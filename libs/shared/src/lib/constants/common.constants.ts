@@ -1,9 +1,14 @@
-import {Tab} from "@tattoo-manager/shared/interfaces/common.interfaces";
+import {Tab} from "../interfaces/common.interfaces";
 
 export const tabTree: {[name: string]: Tab} = {
     dashboard: {
         title: 'dashboard',
-        path: '',
+        path: 'dashboard',
         tabName: 'Dashboard'
+    },
+    login: {
+        title: 'login',
+        path: '',
+        tabName: 'Login'
     },
 }

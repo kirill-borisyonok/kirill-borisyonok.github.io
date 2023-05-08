@@ -1,8 +1,31 @@
 @use 'mixins' as mixins;
 
 :host {
-    .login {
-        height: 100%;
-        width: 100%;
+  .login {
+    @include mixins.flex(center, center, 0);
+    height: 100%;
+    width: 100%;
+
+    &-btn {
+      @include mixins.flex(center, space-around, var(--offset));
+      padding: var(--offset);
+      width: 9rem;
+      height: 3rem;
+      border-radius: var(--border-radius-xl);
+      background-color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s linear;
+
+      &:hover {
+        background-color: var(--black);
+        color: var(--white);
+      }
+
+      &-icon {
+        width: 2rem;
+        height: 2rem;
+      }
     }
+  }
 }

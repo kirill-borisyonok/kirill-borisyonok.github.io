@@ -8,6 +8,11 @@ export const appRoutes: Route[] = [
         title: tabTree.dashboard.title,
     },
     {
+        path: tabTree.login.path,
+		loadComponent: () => import('./pages/login/login.component').then((c) => c.LoginComponent),
+        title: tabTree.dashboard.title,
+    },
+    {
 		path: '**',
 		redirectTo: '',
 	},
