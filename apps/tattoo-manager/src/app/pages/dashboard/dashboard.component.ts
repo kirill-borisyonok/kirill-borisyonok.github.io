@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StepNames } from './entities/dashboard.constants';
@@ -24,6 +29,7 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import { GoogleService } from '../../services/google.service';
+import { GoogleSheetService } from '../../services/google-sheet.service';
 
 @Component({
   standalone: true,
@@ -70,6 +76,7 @@ export class DashboardComponent implements OnInit {
 
   private readonly formBuilder = inject(FormBuilder);
   private readonly googleService = inject(GoogleService);
+  private readonly googleSheetService = inject(GoogleSheetService);
 
   // Form build
   protected applicationDateFormGroup: FormGroup = this.formBuilder.group({
@@ -107,9 +114,11 @@ export class DashboardComponent implements OnInit {
   protected male = new FormControl('Мужской');
 
   ngOnInit(): void {
-    this.male.valueChanges.subscribe((item) => console.log(item));
+    setTimeout(() => {
+      this.googleService.initClient();
+    }, 1000);
 
-    this.googleService.initClient();
+    this.googleSheetService.loadSheet().subscribe((item) => console.log(item));
   }
 
   protected getToken(): void {
@@ -121,6 +130,8 @@ export class DashboardComponent implements OnInit {
   }
 
   protected save(): void {
-    this.googleService.addNewValue().subscribe(item => console.log(item));
+    this.googleSheetService
+      .addNewValue()
+      .subscribe((item) => console.log(item));
   }
 }

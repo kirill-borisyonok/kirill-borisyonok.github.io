@@ -7,3 +7,9 @@ export interface Tab {
 	title?: string;
 	logoPath?: string;
 }
+
+export interface ExcelResponse {
+	range: string;
+	majorDimension: string;
+	values: string[][];
+}
