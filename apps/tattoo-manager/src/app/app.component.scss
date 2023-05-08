@@ -1,9 +1,0 @@
-:host {
-    display: block;
-    height: 100%;
-
-    .main {
-        padding: var(--offset);
-        height: calc(100% - 3.5rem);
-    }
-}
