@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import {GoogleService} from '../../services/google.service';
+import {Router} from '@angular/router';
+import {GoogleService} from '@tattoo-manager/shared/services/google/google.service';
 
 @Component({
   standalone: true,
@@ -12,6 +13,7 @@ import {GoogleService} from '../../services/google.service';
 })
 export class LoginComponent implements OnInit {
   private readonly googleService = inject(GoogleService);
+  private readonly router = inject(Router);
 
   ngOnInit() {
     setTimeout(() => {

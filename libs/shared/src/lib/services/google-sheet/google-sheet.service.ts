@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { GoogleService } from './google.service';
+import { GoogleService } from '../google/google.service';
 import { GoogleSheetMapper } from './google-sheet.mapper';
 import { ExcelResponse } from '@tattoo-manager/shared/interfaces/common.interfaces';
 

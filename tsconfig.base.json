@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tattoo-manager/shared/*": ["libs/shared/src/lib/*"]
+      "@tattoo-manager/shared/*": ["libs/shared/src/lib/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]

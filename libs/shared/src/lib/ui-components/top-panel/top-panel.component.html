@@ -1,12 +1,20 @@
 <header class="top-panel">
-  <div class="top-panel-logo">
-    <img src="assets/svg/ph_google-play-logo-thin.svg" alt="logo">
+  <a class="top-panel-logo">
+    <img src="assets/svg/ph_google-play-logo-thin.svg" alt="logo" />
+  </a>
+  <div class="top-panel-container">
+    <nav class="top-panel-nav">
+      <a
+        class="top-panel-tab"
+        routerLink="dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ tabs.dashboard.tabName }}</a
+      >
+    </nav>
+    <button *ngIf="isAuth" class="top-panel-logout" (click)="revokeToken()">
+      <span>Выйти</span>
+      <mat-icon> exit_to_app </mat-icon>
+    </button>
   </div>
-  <a
-    class="top-panel-tab"
-    routerLink="dashboard"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >{{ tabs.dashboard.tabName }}</a
-  >
 </header>

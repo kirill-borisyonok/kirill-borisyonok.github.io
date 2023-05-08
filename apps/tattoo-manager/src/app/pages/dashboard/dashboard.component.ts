@@ -32,8 +32,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as moment from 'moment';
 import { Observable, map, startWith } from 'rxjs';
-import { GoogleSheetService } from '../../services/google-sheet.service';
-import { GoogleService } from '../../services/google.service';
+import { GoogleSheetService } from '@tattoo-manager/shared/services/google-sheet/google-sheet.service';
 import { StepNames } from './entities/dashboard.constants';
 
 @UntilDestroy()
@@ -94,7 +93,6 @@ export class DashboardComponent implements OnInit {
 
   // DI
   private readonly formBuilder = inject(FormBuilder);
-  private readonly googleService = inject(GoogleService);
   private readonly googleSheetService = inject(GoogleSheetService);
 
   // Form build
@@ -163,10 +161,6 @@ export class DashboardComponent implements OnInit {
         map(value => this.filterAutocomplete(value || '', this.cities)),
       )
     });
-  }
-
-  protected revokeToken(): void {
-    this.googleService.revokeToken();
   }
 
   protected save(): void {

@@ -1,25 +1,53 @@
 @use 'mixins' as mixins;
 
 :host {
-    .top-panel {
-        @include mixins.flex(center, flex-start);
-        gap: var(--offset);
-        padding: var(--offset);
-        height: 3.5rem;
-        color: white;
-        background-color: var(--black);
-        opacity: 0.8;
+  .top-panel {
+    @include mixins.flex(center, flex-start);
+    gap: var(--offset);
+    padding: var(--offset);
+    height: 3.5rem;
+    color: white;
+    background-color: var(--black);
+    opacity: 0.8;
 
-        &-tab {
-            padding: 0.8rem 2rem;
-            border-radius: var(--border-radius);
-            background-color: var(--primary);
-            color: var(--black);
-        }
-
-        .active {
-            background-color: var(--gray2);
-            color: var(--white);
-        }
+    &-container {
+      @include mixins.flex(center, space-between, var(--offset));
+      width: 100%;
     }
+
+    &-tab {
+      padding: 0.8rem 2rem;
+      border-radius: var(--border-radius);
+      background-color: var(--primary);
+      color: var(--black);
+    }
+
+    &-logout {
+      @include mixins.flex(center, space-around, var(--offset-xs));
+      padding: var(--offset);
+      width: 7rem;
+      height: 3rem;
+      border: none;
+      border-radius: var(--border-radius-xl);
+      background-color: var(--black);
+      color: var(--white);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s linear;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    .active {
+      background-color: var(--gray2);
+      color: var(--white);
+    }
+  }
 }
